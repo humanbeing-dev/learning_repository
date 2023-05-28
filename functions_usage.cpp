@@ -5,11 +5,12 @@ using namespace std;
 
 void print_menu();
 char read_input();
-void print_vector(vector<int> list);
+void print_vector(const vector<int> &list);
 void add_number(vector<int> &list);
-void print_mean(vector<int> list);
-void print_smallest(vector<int> list);
-void print_largest(vector<int> list);
+void print_mean(const vector<int> &list);
+void print_smallest(const vector<int> &list);
+void print_largest(const vector<int> &list);
+void print_find(const vector<int> &list);
 
 int main() {
 
@@ -30,6 +31,8 @@ int main() {
             print_smallest(numbers);
         else if (choice == 'L')
             print_largest(numbers);
+        else if (choice == 'F')
+            print_find(numbers);
         else {
             cout << "Quitting program." << endl;
             quit = true;
@@ -44,6 +47,7 @@ void print_menu() {
     cout << "M - Display mean of the numbers" << endl;
     cout << "S - Display the smallest number" << endl;
     cout << "L - Display the largest number" << endl;
+    cout << "F - Find number" << endl;
     cout << "Q - Quit" << endl;
     
 }
@@ -53,7 +57,7 @@ char read_input() {
     char input {};
     cin >> input;
     input = toupper(input);
-    if (input == 'P' || input == 'A' || input == 'M' || input == 'S' || input == 'L' || input == 'Q')
+    if (input == 'P' || input == 'A' || input == 'M' || input == 'S' || input == 'L' || input == 'Q' || input == 'F')
         return input;
     else {
         cout << "Invalid argument, please try again: ";
@@ -61,7 +65,7 @@ char read_input() {
     }
 }
 
-void print_vector(vector<int> list) {
+void print_vector(const vector<int> &list) {
     if (list.size() == 0)
         cout << "No integers in the vector." << endl << endl;
     else {
@@ -81,7 +85,7 @@ void add_number(vector<int> &list) {
     cout << "Added integer: " << a << endl << endl;
 }
 
-void print_mean(vector<int> list) {
+void print_mean(const vector<int> &list) {
     if (list.size() == 0)
         cout << "No integers in the vector." << endl << endl;
     else {
@@ -93,7 +97,7 @@ void print_mean(vector<int> list) {
     }
 }
 
-void print_smallest(vector<int> list) {
+void print_smallest(const vector<int> &list) {
     if (list.size() == 0)
         cout << "No integers in the vector." << endl << endl;
     else {
@@ -106,7 +110,7 @@ void print_smallest(vector<int> list) {
     }
 }
 
-void print_largest(vector<int> list) {
+void print_largest(const vector<int> &list) {
     if (list.size() == 0)
         cout << "No integers in the vector." << endl << endl;
     else {
@@ -116,5 +120,24 @@ void print_largest(vector<int> list) {
                 result = list.at(i);
         }
         cout << "The alrgest number in the vector is: " << result << endl << endl;
+    }
+}
+
+void print_find(const vector<int> &list) {
+    if (list.size() == 0)
+        cout << "No integers in the vector." << endl << endl;
+    else {
+        int number {};
+        bool found {false};
+        cout << "Input integer to find: ";
+        cin >> number;
+        for (auto find: list) {
+            if (find == number)
+                found = true;
+        }
+        if (found == true)
+            cout << number << " was found." << endl << endl;
+        else
+            cout << number << " was not found." << endl << endl;                
     }
 }
