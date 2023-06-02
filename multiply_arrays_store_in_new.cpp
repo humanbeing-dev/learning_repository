@@ -3,7 +3,7 @@
 using namespace std;
 
 void print(const int *const array, size_t array_size);
-int *apply_all(int *array1, size_t array_size1, int *array2, size_t array_size2);
+int * apply_all(const int *const array1, size_t array_size1, const int *const array2, size_t array_size2);
 
 int main() {
     const size_t array1_size {5};
@@ -39,10 +39,10 @@ void print(const int *const array, size_t array_size) {
     cout << endl;
 }
 
-int *apply_all(int *array1, size_t array_size1, int *array2, size_t array_size2){
-    size_t array_size3 = array_size1 * array_size2;
+int * apply_all(const int *const array1, size_t array_size1, const int *const array2, size_t array_size2){
+    
     int *pointer = nullptr;
-    pointer = new int[array_size3];
+    pointer = new int[array_size1 * array_size2];
     size_t i = {0};
 
         for (size_t j = {}; j < array_size2; j++) {
