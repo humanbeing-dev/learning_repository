@@ -56,21 +56,21 @@ public:
     // Overloaded extraction operator
     std::istream &operator>>(std::istream &is);
     // Overloaded unary minus operator - make lower case BUT DONT CHANGE the object itself. RETURN LOWER CASE
-    Mystring operator-();
+    Mystring operator-() const;
     // Overloaded equality operator - checks if the strings are the same
-    bool operator==(const Mystring &rhs); 
+    bool operator==(const Mystring &rhs) const; 
     // Overloaded not quality operator - checks if the strings are NOT the same
-    bool operator!=(const Mystring &rhs);
+    bool operator!=(const Mystring &rhs) const;
     // Overloaded less then operator returns true if lhs is lexically less then rhs
-    bool operator<(const Mystring &rhs);
+    bool operator<(const Mystring &rhs) const;
     // Overloaded more then operator returns true if lhs is lexically more then rhs
-    bool operator>(const Mystring &rhs);
+    bool operator>(const Mystring &rhs) const;
     // Concatentation
     Mystring operator+(const Mystring &rhs) const;
     // Concatenate and store the result in the lhs object
     Mystring &operator+=(const Mystring &rhs);
     // Multiplying the string x times
-    Mystring operator*(int number);
+    Mystring operator*(int number) const;
     // Multiplying the string x times and storing the result in the left hand side object.
     Mystring &operator*=(int number);
     // Pre-increment ++ overloaded operator - makes all letter uppercase
