@@ -4,7 +4,7 @@ Welcome to my learning repository! Here, I document my coding exercises and lear
 
 ## Courses Completed
 
-### [Beginning C++ Programming - From Beginner to Beyond](https://www.udemy.com/course/beginning-c-plus-plus-programming) by Tim Buchalka
+### [Beginning C++ Programming - From Beginner to Beyond](https://www.udemy.com/course/beginning-c-plus-plus-programming)
 - ✅ Completed
 
 ### [CS50's Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science)
