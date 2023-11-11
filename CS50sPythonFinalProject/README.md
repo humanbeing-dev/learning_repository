@@ -23,3 +23,13 @@ This file simulates battles between characters created in **character.py**. The 
 The default game mechanics have been balanced to favor the Knight in skirmishes with the Wizard, the Wizard in skirmishes with the Rogue, and the Rogue in skirmishes with the Knight. Developers can use this balanced foundation as a starting point and further customize character abilities to suit their game's unique requirements.
 
 Explore the **Game Balance Simulator** and create strategically balanced gaming experiences for your players!
+
+
+
+TODO: How to run script:
+
+```
+python proje...
+```
+
+TODO: How to test it:

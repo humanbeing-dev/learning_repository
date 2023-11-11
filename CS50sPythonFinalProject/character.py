@@ -1,8 +1,9 @@
+from abc import ABC, abstractmethod
 import random
 from typing import List
 
 
-def roll_d(x: int) -> int:
+def roll_dice(x: int) -> int:
     """
     Roll dice with x number of sides.
 
@@ -18,11 +19,15 @@ def roll_d(x: int) -> int:
         raise ValueError("Invalid number for a dice roll")
 
 
-class Character:
+class Character(ABC):
     def __init__(self, name: str, health: int):
         self.name = name
         self.health = health
         self.base_roll: List[int] = []
+
+    @abstractmethod
+    def passive_ability(self, other_base_roll):
+        pass
 
     @property
     def name(self):
@@ -48,8 +53,8 @@ class Character:
                 "Invalid health number. Health has to be an int bigger then 0"
             )
 
-    def roll_base(self):
-        self.base_roll = [roll_d(6) for _ in range(6)]
+    def roll_base(self) -> None:
+        self.base_roll = [roll_dice(6) for _ in range(6)]
 
 
 class Knight(Character):
@@ -67,7 +72,7 @@ class Knight(Character):
         :return: List of integers
         :rtype: List[int]
         """
-        self.base_roll.append(roll_d(4))
+        self.base_roll.append(roll_dice(4))
         return self.base_roll
 
 
@@ -92,8 +97,8 @@ class Rogue(Character):
             other_base_roll.count(6) > self.base_roll.count(6)
             or sum(self.base_roll) < 18
         ):
-            self.base_roll.append(roll_d(6))
-            self.base_roll.append(roll_d(6))
+            self.base_roll.append(roll_dice(6))
+            self.base_roll.append(roll_dice(6))
 
 
 class Wizard(Character):
@@ -118,7 +123,7 @@ class Wizard(Character):
         """
         if 1 in self.base_roll:
             self.base_roll.remove(1)
-            self.base_roll.append(roll_d(6))
+            self.base_roll.append(roll_dice(6))
         if len(other_base_roll) == 8 and 1 in self.base_roll:
             self.base_roll.remove(1)
             self.base_roll.append(12)

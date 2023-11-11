@@ -1,4 +1,4 @@
-from character import Wizard, Knight, Rogue
+from character import Character, Wizard, Knight, Rogue
 
 
 def main():
@@ -6,10 +6,11 @@ def main():
     wizard = Wizard("Maciek", 100)
     rogue = Rogue("Michal", 100)
 
-    number_of_tests = 100000
-    wizard_wins_vs_knight = 0
-    wizard_wins_vs_rogue = 0
-    knight_wins_vs_rogue = 0
+    # TODO: get input from user and validate it
+    number_of_tests: int = 10
+    wizard_wins_vs_knight: int = 0
+    wizard_wins_vs_rogue: int = 0
+    knight_wins_vs_rogue: int = 0
 
     for _ in range(number_of_tests):
         # simulate fight wizard vs knight
@@ -30,7 +31,7 @@ def main():
     )
 
 
-def simulate_wizard_vs_knight(wizard, knight):
+def simulate_wizard_vs_knight(char1: Character, char2: Character):
     """
     Wizard's passive ability when fighting knight is used before knight applies its passive.
     Returns 1 if Wizard has won with a Knight and 0 if Wizard has lost.
@@ -44,17 +45,17 @@ def simulate_wizard_vs_knight(wizard, knight):
     :return: integer
     :rtype: int
     """
-    wizard.roll_base()
-    knight.roll_base()
-    wizard.passive_ability(knight.base_roll)
-    knight.passive_ability()
-    if sum(wizard.base_roll) > sum(knight.base_roll):
-        return 1
-    else:
-        return 0
+    
+    char1.roll_base()
+    char2.roll_base()
+    char1.passive_ability(char2.base_roll)
+    char2.passive_ability()
+    if sum(char1.base_roll) > sum(char2.base_roll):
+        return True
+    return False
 
 
-def simulate_wizard_vs_rogue(wizard, rogue):
+def simulate_wizard_vs_rogue(char1: Character, char2: Character):
     """
     Wizard's passive ability when fighting knight is used after Rogue applies its passive.
     Returns 1 if Wizard has won with a Rogue and 0 if Wizard has lost.
@@ -68,17 +69,17 @@ def simulate_wizard_vs_rogue(wizard, rogue):
     :return: integer
     :rtype: int
     """
-    wizard.roll_base()
-    rogue.roll_base()
-    rogue.passive_ability(wizard.base_roll)
-    wizard.passive_ability(rogue.base_roll)
-    if sum(wizard.base_roll) > sum(rogue.base_roll):
-        return 1
-    else:
-        return 0
+
+    char1.roll_base()
+    char2.roll_base()
+    char2.passive_ability(char1.base_roll)
+    char1.passive_ability(char2.base_roll)
+    if sum(char1.base_roll) > sum(char2.base_roll):
+        return True
+    return False
 
 
-def simulate_knight_vs_rogue(knight, rogue):
+def simulate_knight_vs_rogue(char1: Character, char2: Character):
     """
     Knight's passive ability when fighting Rogue is used before Rogue applies its passive.
     Returns 1 if knight has won with a Rogue and 0 if Knight has lost.
@@ -92,14 +93,14 @@ def simulate_knight_vs_rogue(knight, rogue):
     :return: integer
     :rtype: int
     """
-    knight.roll_base()
-    rogue.roll_base()
-    knight.passive_ability()
-    rogue.passive_ability(knight.base_roll)
-    if sum(knight.base_roll) > sum(rogue.base_roll):
-        return 1
-    else:
-        return 0
+
+    char1.roll_base()
+    char2.roll_base()
+    char1.passive_ability()
+    char2.passive_ability(char1.base_roll)
+    if sum(char1.base_roll) > sum(char2.base_roll):
+        return True
+    return False
 
 
 if __name__ == "__main__":
